@@ -1,6 +1,6 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
-/*
+
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
@@ -8,20 +8,20 @@ import java.time.LocalDate;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Tramo;
 import org.junit.Test;
-*/
+
 public class PermanenciaTest {
-	/*
+	
 	private static final String ERROR_EXCEPCION = "Debería haber saltado la excepción.";
 	private static final String ERROR_NO_EXCEPCION = "No debería haber saltado la excepción.";
 	
-	private LocalDate dia = LocalDate.of(2018, 12, 1); 
+	private LocalDate dia = LocalDate.of(2022, 12, 1); 
 	Permanencia permanencia = new Permanencia(dia, Tramo.MANANA);
 
 	@Test
 	public void constructorValidoTest() {
 		try {
 			Permanencia permanencia = new Permanencia(dia, Tramo.MANANA);
-			assertEquals(2018, permanencia.getDia().getYear());
+			assertEquals(2022, permanencia.getDia().getYear());
 			assertEquals(12, permanencia.getDia().getMonthValue());
 			assertEquals(1, permanencia.getDia().getDayOfMonth());
 			assertEquals(Tramo.MANANA, permanencia.getTramo());
@@ -34,7 +34,7 @@ public class PermanenciaTest {
 	public void constructorNoValidoTest() {
 		Permanencia permanencia = null;
 		try {
-			permanencia = new Permanencia(LocalDate.of(2018, 12, 1), null);
+			permanencia = new Permanencia(LocalDate.of(2022, 12, 1), null);
 			fail(ERROR_EXCEPCION);
 		} catch (NullPointerException e) {
 			assertEquals("ERROR: El tramo de una permanencia no puede ser nulo.", e.getMessage());
@@ -101,7 +101,7 @@ public class PermanenciaTest {
 	
 	@Test
 	public void toStringTest() {
-		assertEquals("dia=01/12/2018, tramo=Mañana", permanencia.toString());
+		assertEquals("dia=01/12/2022, tramo=Mañana", permanencia.toString());
 	}
-*/
+
 }

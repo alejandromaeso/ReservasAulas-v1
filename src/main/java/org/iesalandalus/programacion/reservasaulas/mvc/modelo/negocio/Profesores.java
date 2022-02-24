@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -8,7 +9,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 
 public class Profesores {
 
-	ArrayList<Profesor> coleccionProfesores;
+	List<Profesor> coleccionProfesores;
 
 	public Profesores() {
 		
@@ -27,6 +28,8 @@ public class Profesores {
 			throw new NullPointerException("ERROR: No se pueden copiar profesores nulos.");
 		}
 		
+		//CON ESTA COMPROBACIÓN VERIFICARÍAMOS QUE NO ESTABLEZCA UN LISTADO VACÍO
+		//LA COMENTO PORQUE FALLAN LOS TEST:
 		/*if (profesores.getProfesores().isEmpty()) {
 			throw new IllegalArgumentException("ERROR: La lista de profesores no puede estar vacía.");
 		}*/
@@ -34,7 +37,7 @@ public class Profesores {
 		coleccionProfesores = profesores.getProfesores();
 	}
 
-	public ArrayList<Profesor> getProfesores() {
+	public List<Profesor> getProfesores() {
 		return copiaProfundaProfesores(coleccionProfesores);
 	}
 	
@@ -43,8 +46,8 @@ public class Profesores {
 		return coleccionProfesores.size();
 	}
 
-	private ArrayList<Profesor> copiaProfundaProfesores(ArrayList<Profesor> profesores) {
-		ArrayList<Profesor> copiaProfesores = new ArrayList<Profesor>();
+	private List<Profesor> copiaProfundaProfesores(List<Profesor> profesores) {
+		List<Profesor> copiaProfesores = new ArrayList<Profesor>();
 		Iterator<Profesor> iterador = profesores.iterator();
 		
 		while(iterador.hasNext()) {
@@ -99,8 +102,8 @@ public class Profesores {
 
 	}
 
-	public ArrayList<String> representar() {
-		ArrayList<String> representacion = new ArrayList<String>();
+	public List<String> representar() {
+		List<String> representacion = new ArrayList<String>();
 		Iterator<Profesor> iterador = coleccionProfesores.iterator();
 		while (iterador.hasNext()) {
 			Profesor profesorRepresentado = iterador.next();

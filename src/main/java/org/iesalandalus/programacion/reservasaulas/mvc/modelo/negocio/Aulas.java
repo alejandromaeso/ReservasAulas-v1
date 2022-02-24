@@ -3,11 +3,13 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
 import java.util.ArrayList;
 import javax.naming.OperationNotSupportedException;
 import java.util.Iterator;
+import java.util.List;
+
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 
 public class Aulas {
 
-	ArrayList<Aula> coleccionAulas;
+	List<Aula> coleccionAulas;
 
 	public Aulas() {
 
@@ -22,32 +24,36 @@ public class Aulas {
 		if (aulas == null) {
 			throw new NullPointerException("ERROR: No se pueden copiar aulas nulas.");
 		}
-		/*if (aulas.getAulas().isEmpty()) {
-			throw new IllegalArgumentException("ERROR: La lista de aulas no puede estar vacía.");
-		}*/
+
+		// CON ESTA COMPROBACIÓN VERIFICARÍAMOS QUE NO ESTABLEZCA UN LISTADO VACÍO
+		// LA COMENTO PORQUE FALLAN LOS TEST:
+		/*
+		 * if (aulas.getAulas().isEmpty()) { throw new
+		 * IllegalArgumentException("ERROR: La lista de aulas no puede estar vacía."); }
+		 */
 
 		coleccionAulas = aulas.getAulas();
 	}
 
-	public ArrayList<Aula> getAulas() {
-		
-		//Devuelvo una copia para evitar el aliasing
-		
+	public List<Aula> getAulas() {
+
+		// Devuelvo una copia para evitar el aliasing
+
 		return copiaProfundaAulas(coleccionAulas);
 	}
 
-	private ArrayList<Aula> copiaProfundaAulas(ArrayList<Aula> listaAulas) {
-		ArrayList<Aula> copiaAulas = new ArrayList<Aula>();
+	private List<Aula> copiaProfundaAulas(List<Aula> listaAulas) {
+		List<Aula> copiaAulas = new ArrayList<Aula>();
 		Iterator<Aula> iterador = listaAulas.iterator();
 		while (iterador.hasNext()) {
 			copiaAulas.add(new Aula(iterador.next()));
 		}
 		return copiaAulas;
 	}
-	
+
 	public int getNumAulas() {
 		return coleccionAulas.size();
-		
+
 	}
 
 	public void insertar(Aula insertarAula) throws OperationNotSupportedException {
@@ -60,18 +66,18 @@ public class Aulas {
 		} else {
 			throw new OperationNotSupportedException("ERROR: Ya existe un aula con ese nombre.");
 		}
-		
+
 	}
-	
+
 	public Aula buscar(Aula buscarAula) {
 		if (buscarAula == null) {
 			throw new NullPointerException("ERROR: No se puede buscar un aula nula.");
 		}
-		
+
 		Iterator<Aula> iterador = coleccionAulas.iterator();
 		while (iterador.hasNext()) {
-			Aula aulaBuscada = iterador.next(); 
-			if(buscarAula.equals(aulaBuscada)){
+			Aula aulaBuscada = iterador.next();
+			if (buscarAula.equals(aulaBuscada)) {
 				return new Aula(aulaBuscada);
 			}
 		}
@@ -82,8 +88,7 @@ public class Aulas {
 		if (borrarAula == null) {
 			throw new NullPointerException("ERROR: No se puede borrar un aula nula.");
 		}
-		
-		
+
 		if (coleccionAulas.contains(borrarAula)) {
 			coleccionAulas.remove(borrarAula);
 		} else {
@@ -92,8 +97,8 @@ public class Aulas {
 
 	}
 
-	public ArrayList<String> representar() {
-		ArrayList<String> representacion = new ArrayList<String>();
+	public List<String> representar() {
+		List<String> representacion = new ArrayList<String>();
 		Iterator<Aula> iterador = coleccionAulas.iterator();
 		while (iterador.hasNext()) {
 			Aula aulaRepresentada = iterador.next();

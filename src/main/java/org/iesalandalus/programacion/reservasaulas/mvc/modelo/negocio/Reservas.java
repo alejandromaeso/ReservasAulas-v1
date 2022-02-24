@@ -15,7 +15,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public class Reservas {
 
-	ArrayList<Reserva> coleccionReservas;
+	List<Reserva> coleccionReservas;
 
 	public Reservas() {
 		coleccionReservas = new ArrayList<>();
@@ -28,13 +28,13 @@ public class Reservas {
 	private void setReservas(Reservas reservas) {
 
 		if (reservas == null) {
-			throw new NullPointerException("ERROR: No se pueden copiar profesores nulos.");
+			throw new NullPointerException("ERROR: No se pueden copiar reservas nulas.");
 		}
 		coleccionReservas = reservas.getReservas();
 	}
 
-	private ArrayList<Reserva> copiaProfundaReservas(ArrayList<Reserva> reservas) {
-		ArrayList<Reserva> copiaReservas = new ArrayList<Reserva>();
+	private List<Reserva> copiaProfundaReservas(List<Reserva> reservas) {
+		List<Reserva> copiaReservas = new ArrayList<Reserva>();
 		Iterator<Reserva> iterador = reservas.iterator();
 
 		while (iterador.hasNext()) {
@@ -44,7 +44,7 @@ public class Reservas {
 		return copiaReservas;
 	}
 
-	public ArrayList<Reserva> getReservas() {
+	public List<Reserva> getReservas() {
 		return copiaProfundaReservas(coleccionReservas);
 	}
 
@@ -55,13 +55,13 @@ public class Reservas {
 	public void insertar(Reserva insertarReserva) throws OperationNotSupportedException {
 
 		if (insertarReserva == null) {
-			throw new NullPointerException("ERROR: No se puede insertar un profesor nulo.");
+			throw new NullPointerException("ERROR: No se puede realizar una reserva nula.");
 		}
 
 		if (!coleccionReservas.contains(insertarReserva)) {
 			coleccionReservas.add(insertarReserva);
 		} else {
-			throw new OperationNotSupportedException("ERROR: Ya existe un profesor con ese nombre.");
+			throw new OperationNotSupportedException("ERROR: La reserva ya existe.");
 		}
 	}
 
@@ -116,7 +116,7 @@ public class Reservas {
 
 	public Reserva buscar(Reserva buscarReserva) {
 		if (buscarReserva == null) {
-			throw new NullPointerException("ERROR: No se puede buscar un profesor nulo.");
+			throw new NullPointerException("ERROR: No se puede buscar un reserva nula.");
 		}
 
 		Iterator<Reserva> iterador = coleccionReservas.iterator();
@@ -133,19 +133,19 @@ public class Reservas {
 
 	public void borrar(Reserva borrarReserva) throws OperationNotSupportedException {
 		if (borrarReserva == null) {
-			throw new NullPointerException("ERROR: No se puede borrar un profesor nulo.");
+			throw new NullPointerException("ERROR: No se puede anular una reserva nula.");
 		}
 
 		if (coleccionReservas.contains(borrarReserva)) {
 			coleccionReservas.remove(borrarReserva);
 		} else {
-			throw new OperationNotSupportedException("ERROR: No existe ningún profesor con ese nombre.");
+			throw new OperationNotSupportedException("ERROR: La reserva a anular no existe.");
 		}
 
 	}
 
-	public ArrayList<String> representar() {
-		ArrayList<String> representacion = new ArrayList<String>();
+	public List<String> representar() {
+		List<String> representacion = new ArrayList<String>();
 		Iterator<Reserva> iterador = coleccionReservas.iterator();
 		while (iterador.hasNext()) {
 			Reserva reservaRepresentada = iterador.next();
